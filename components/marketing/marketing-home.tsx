@@ -95,7 +95,7 @@ const copy = {
     platformIntro: 'تجمع فيلدوايز عناصر التشغيل اليومية في عرض مشترك. ابدأ بما تحتاجه الفرق اليوم، ثم ابنِ إيقاعاً أكثر ثباتاً بين المواقع.',
     modules: [
       ['العمل مستمر', 'للمهام والطلبات مكان واضح ومسؤول وحالة يمكن للفريق متابعتها.', 'المهام · الطلبات'],
-      ['معيار قابل للاستخدام', 'أبقِ الإجراءات وقوائم التحقق قريبة من اللحظات التي ترشدها.', 'الإجراءات · قوائم التحقق'],
+      ['معيار قابل للاستخدام', 'أبقِ الإجراءات وقوائم التحقق ق��يبة من اللحظات التي ترشدها.', 'الإجراءات · قوائم التحقق'],
       ['الأشخاص قبل الأرقام', 'اربط سجلات الموظفين والفروع بالعمل الذي يجري حولهم.', 'الأشخاص · الفروع'],
       ['التدريب ضمن سير العمل', 'تابع سجلات التدريب والتقدم إلى جانب العمليات اليومية.', 'تقدم التدريب'],
       ['إشارات تستحق الانتباه', 'اجمع سجلات مؤشرات الأداء ضمن نقاشات المديرين اليومية.', 'المؤشرات · الأداء'],
@@ -219,7 +219,7 @@ export default function MarketingHome() {
       <section className="border-b border-border bg-background px-5 py-5 md:px-8">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-x-6 gap-y-3">
           <span className="text-[10px] font-bold uppercase tracking-[.15em] text-muted-foreground">{t.proof}</span>
-          <div className="flex flex-wrap gap-2">{['People', 'Process', 'Locations', 'Performance'].map((name, index) => <span key={name} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[10px] font-semibold text-muted-foreground"><span className="grid size-4 place-items-center rounded-full bg-primary/10 text-primary">{[<UsersRound size={10} />, <FileText size={10} />, <Building2 size={10} />, <ChartNoAxesCombined size={10} />][index]}</span>{name}</span>)}</div>
+          <div className="flex flex-wrap gap-2">{['People', 'Process', 'Locations', 'Performance'].map((name, index) => <span key={name} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[10px] font-semibold text-muted-foreground"><span className="grid size-4 place-items-center rounded-full bg-primary/10 text-primary">{[UsersRound, FileText, Building2, ChartNoAxesCombined].map((Icon, iconIndex) => iconIndex === index ? <Icon key={iconIndex} size={10} /> : null)}</span>{name}</span>)}</div>
         </div>
       </section>
 

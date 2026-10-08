@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
 import type { Language } from '@/lib/workspace/config';
 
 const THEME_KEY = 'fieldwise-theme';
@@ -16,15 +16,11 @@ type Preferences = {
 const PreferencesContext = createContext<Preferences | null>(null);
 
 export function PreferencesProvider({ children }: { children: ReactNode }) {
-  const [dark, setDark] = useState(false);
-  const [language, setLanguageState] = useState<Language>('en');
-
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains('dark'));
-    try {
-      if (localStorage.getItem(LANGUAGE_KEY) === 'ar') setLanguageState('ar');
-    } catch { /* storage may be unavailable */ }
-  }, []);
+  const [dark, setDark] = useState(() => typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'en';
+    try { return localStorage.getItem(LANGUAGE_KEY) === 'ar' ? 'ar' : 'en'; } catch { return 'en'; }
+  });
 
   const toggleTheme = useCallback(() => {
     setDark(current => {

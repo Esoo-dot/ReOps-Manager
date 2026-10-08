@@ -8,13 +8,15 @@ import { useCreateOperationsRecord, useDeleteOperationsRecord, useGetOperationsS
 import { type OperationsRecord, type OperationsRecordInput, type RecordKind } from '@/lib/api/types';
 import { Activity, BookOpenCheck, Building2, Check, ClipboardList, FileText, Filter, Plus, Search, ShieldCheck, Target, X, Pencil, Trash2 } from 'lucide-react';
 
+const EMPTY_RECORDS: OperationsRecord[] = [];
+
 function RecordsPage({ path, meta, language, globalSearch }: { path: string; meta: typeof pageMeta[string]; language: Language; globalSearch: string }) {
   const [localSearch, setLocalSearch] = useState('');
   const [showCreate, setShowCreate] = useState(false);
   const [editing, setEditing] = useState<OperationsRecord | null>(null);
   const [filter, setFilter] = useState('All');
   const query = useListOperationsRecords(meta.kind ? { kind: meta.kind } : undefined);
-  const records = query.data ?? [];
+  const records = query.data ?? EMPTY_RECORDS;
   const searchValue = `${localSearch} ${globalSearch}`.trim().toLowerCase();
   const filtered = useMemo(() => records.filter(r => {
     const matches = !searchValue || `${r.title} ${r.detail} ${r.assignee} ${r.branch} ${r.department} ${r.status}`.toLowerCase().includes(searchValue);

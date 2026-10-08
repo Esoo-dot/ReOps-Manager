@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useWorkspace } from '@/components/workspace/workspace-context';
 import { type Language, tx, cx } from '@/lib/workspace/config';
 import { PageTitle } from '@/components/workspace/primitives';
@@ -8,13 +8,13 @@ import { BriefcaseBusiness, Building2, CalendarDays, CheckCircle2, Globe2 } from
 
 function SettingsPage({ language, setLanguage, branchCount }: { language: Language; setLanguage: (language: Language) => void; branchCount: number }) {
   const [saved, setSaved] = useState(false);
-  const [weekStart, setWeekStart] = useState<'Monday' | 'Sunday' | 'Saturday'>('Monday');
-  useEffect(() => {
+  const [weekStart, setWeekStart] = useState<'Monday' | 'Sunday' | 'Saturday'>(() => {
+    if (typeof window === 'undefined') return 'Monday';
     try {
       const savedValue = localStorage.getItem('fieldwise-week-start');
-      if (savedValue === 'Sunday' || savedValue === 'Saturday') setWeekStart(savedValue);
-    } catch { /* preferences are optional */ }
-  }, []);
+      return savedValue === 'Sunday' || savedValue === 'Saturday' ? savedValue : 'Monday';
+    } catch { return 'Monday'; }
+  });
   const toggleLanguage = (next: Language) => { setLanguage(next); setSaved(true); window.setTimeout(() => setSaved(false), 2200); };
   const updateWeekStart = (next: 'Monday' | 'Sunday' | 'Saturday') => {
     setWeekStart(next);
