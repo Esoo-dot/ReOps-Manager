@@ -23,10 +23,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${dmSans.variable} ${manrope.variable} ${notoArabic.variable}`}>
-      <head>
+      <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
-      <body>
         <PreferencesProvider>{children}</PreferencesProvider>
       </body>
     </html>
