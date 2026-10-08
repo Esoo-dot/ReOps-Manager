@@ -60,7 +60,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <aside id="workspace-drawer" aria-label={ar ? 'التنقل في مساحة العمل' : 'Workspace navigation'} aria-modal={mobileMenu ? true : undefined} role={mobileMenu ? 'dialog' : undefined} className={cx('fixed inset-y-0 z-40 flex w-[252px] flex-col bg-sidebar text-sidebar-foreground transition-transform duration-300 max-md:w-[280px]', ar ? 'right-0' : 'left-0', mobileMenu ? 'translate-x-0' : ar ? 'translate-x-full md:translate-x-0' : '-translate-x-full md:translate-x-0')}>
         <div className="flex h-[82px] items-center gap-3 border-b border-sidebar-border px-6">
           <div className="grid size-10 place-items-center rounded-xl bg-accent text-sidebar font-bold"><Command size={20} /></div>
-          <div><div className="font-[var(--app-font-serif)] text-[17px] font-extrabold tracking-[-.04em]">fieldwise</div><div className="mt-0.5 text-[10px] font-semibold uppercase tracking-[.18em] text-sidebar-foreground/55">Operations</div></div>
+          <div><div className="font-[var(--app-font-serif)] text-[17px] font-extrabold tracking-[-.04em]">ReOps</div><div className="mt-0.5 text-[10px] font-semibold uppercase tracking-[.18em] text-sidebar-foreground/55">Operations</div></div>
           <button type="button" onClick={() => setMobileMenu(false)} className="ms-auto rounded-md p-2 text-sidebar-foreground/65 md:hidden" aria-label="Close menu"><X size={18} /></button>
         </div>
         <div className="px-4 pt-6">

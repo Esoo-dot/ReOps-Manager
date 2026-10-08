@@ -8,7 +8,7 @@ const manrope = Manrope({ subsets: ['latin'], weight: ['500', '600', '700', '800
 const notoArabic = Noto_Sans_Arabic({ subsets: ['arabic'], weight: ['400', '500', '600', '700'], variable: '--font-noto-arabic' });
 
 export const metadata: Metadata = {
-  title: 'Fieldwise — Operations management for multi-branch teams',
+  title: 'ReOps Manager — Operations management for multi-branch teams',
   description: 'Coordinate tasks, requests, people, training, SOPs and KPIs across every branch from one bilingual workspace.',
   icons: { icon: '/favicon.svg' },
 };

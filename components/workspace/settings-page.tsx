@@ -23,7 +23,7 @@ function SettingsPage({ language, setLanguage, branchCount }: { language: Langua
     window.setTimeout(() => setSaved(false), 2200);
   };
   return <>
-    <PageTitle eyebrow="YOUR WORKSPACE" title="Settings" subtitle="Make Fieldwise work the way your team does." language={language} />
+    <PageTitle eyebrow="YOUR WORKSPACE" title="Settings" subtitle="Make ReOps Manager work the way your team does." language={language} />
     <div className="grid gap-5">
       <div className="space-y-5">
         <section className="rounded-xl border border-border bg-card">
