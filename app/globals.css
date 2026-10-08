@@ -47,6 +47,12 @@
   --color-blue-soft: hsl(var(--blue-soft));
   --color-success-soft: hsl(var(--success-soft));
   --color-success-ink: hsl(var(--success-ink));
+  --color-status-positive: hsl(var(--status-positive));
+  --color-status-positive-soft: hsl(var(--status-positive-soft));
+  --color-status-warning: hsl(var(--status-warning));
+  --color-status-warning-soft: hsl(var(--status-warning-soft));
+  --color-status-danger: hsl(var(--status-danger));
+  --color-status-danger-soft: hsl(var(--status-danger-soft));
 
   --color-chart-1: hsl(var(--chart-1));
   --color-chart-2: hsl(var(--chart-2));
@@ -95,8 +101,14 @@
   --brass: 38 52% 54%;
   --brass-soft: 38 53% 91%;
   --blue-soft: 203 22% 93%;
-  --success-soft: 132 24% 92%;
-  --success-ink: 145 25% 37%;
+  --success-soft: 42 53% 91%;
+  --success-ink: 38 52% 38%;
+  --status-positive: 203 41% 48%;
+  --status-positive-soft: 203 22% 93%;
+  --status-warning: 38 52% 38%;
+  --status-warning-soft: 38 53% 91%;
+  --status-danger: 8 56% 48%;
+  --status-danger-soft: 8 56% 93%;
   --background: 42 36% 96%;
   --foreground: 204 26% 17%;
   --border: 35 19% 87%;
@@ -236,6 +248,12 @@
   --popover: 204 25% 16%;
   --popover-foreground: 42 24% 92%;
   --popover-border: 204 18% 26%;
+  --status-positive: 203 41% 62%;
+  --status-positive-soft: 204 22% 22%;
+  --status-warning: 38 70% 68%;
+  --status-warning-soft: 38 30% 22%;
+  --status-danger: 8 56% 67%;
+  --status-danger-soft: 8 28% 22%;
   --primary: 158 35% 55%;
   --primary-foreground: 204 31% 12%;
   --secondary: 204 18% 24%;

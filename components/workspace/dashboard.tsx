@@ -31,7 +31,7 @@ function Dashboard({ language, globalSearch }: { language: Language; globalSearc
     </section>
     <div className="mb-3 flex items-center justify-between"><h2 className="text-[12px] font-bold">{tx('Today at a glance', language)}</h2><button onClick={() => setLocation('/app/performance')} className="text-[10px] font-semibold text-primary hover:underline">View reports <ArrowRight size={12} className="inline" /></button></div>
     {isLoading ? <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{Array.from({ length: 4 }).map((_, i) => <div key={i} className="h-[126px] animate-pulse rounded-xl border border-border bg-card" />)}</div> : isError || !summary ? <QueryError retry={() => refetch()} /> : <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-       <MetricCard label={tx('Team members', language)} value={summary.employees} note={tx('Active roster', language)} icon={UsersRound} accent="#507d69" />
+       <MetricCard label={tx('Team members', language)} value={summary.employees} note={tx('Active roster', language)} icon={UsersRound} accent="hsl(var(--status-positive))" />
        <MetricCard label={tx('Open tasks', language)} value={summary.tasksOpen} note={tx('Across all branches', language)} icon={ListTodo} accent="#c28a3c" />
        <MetricCard label={tx('Open requests', language)} value={summary.requestsOpen} note={tx('Current queue', language)} icon={ClipboardList} accent="#b56c52" />
        <MetricCard label={tx('Training completion', language)} value={`${summary.trainingCompletion}%`} note={tx('Team average', language)} icon={BookOpenCheck} accent="#6689a0" progress={summary.trainingCompletion} />
