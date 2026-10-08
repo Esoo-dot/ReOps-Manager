@@ -18,8 +18,8 @@ const PreferencesContext = createContext<Preferences | null>(null);
 export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [dark, setDark] = useState(() => typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
   const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === 'undefined') return 'en';
-    try { return localStorage.getItem(LANGUAGE_KEY) === 'ar' ? 'ar' : 'en'; } catch { return 'en'; }
+    if (typeof window === 'undefined') return 'ar';
+    try { return localStorage.getItem(LANGUAGE_KEY) === 'en' ? 'en' : 'ar'; } catch { return 'ar'; }
   });
 
   const toggleTheme = useCallback(() => {
@@ -46,4 +46,4 @@ export function usePreferences() {
   return context;
 }
 
-export const themeInitScript = `(function(){try{var s=localStorage.getItem('${THEME_KEY}');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var e=document.documentElement;e.classList.toggle('dark',d);e.style.colorScheme=d?'dark':'light';}catch(_){}})();`;
+export const themeInitScript = `(function(){try{var s=localStorage.getItem('${THEME_KEY}');var d=s?s==='dark':false;var e=document.documentElement;e.classList.toggle('dark',d);e.style.colorScheme=d?'dark':'light';}catch(_){}})();`;

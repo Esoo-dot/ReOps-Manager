@@ -285,7 +285,28 @@ html { scrollbar-width: thin; scrollbar-color: hsl(var(--muted-foreground) / .45
 .marketing .mk-header { background: color-mix(in srgb, hsl(var(--background)) 92%, transparent); }
 .marketing .mk-hero { background: var(--mk-paper); color: var(--mk-ink); }
 .dark .marketing { --mk-paper: #1e3031; --mk-ink: #edf0e8; }
-.dark .marketing .mk-hero { background: var(--mk-paper); color: var(--mk-ink); }
+ .dark .marketing .mk-hero { background: var(--mk-paper); color: var(--mk-ink); }
+
+/* ReOps public site direction: airy white canvas, electric blue actions, and centered Arabic hero. */
+.marketing { --mk-ink: #111827; --mk-blue: #2563eb; --mk-violet: #9333ea; --mk-paper: #ffffff; background: #ffffff; }
+.marketing .mk-header { background: rgba(255,255,255,.92); border-color: #eef0f5; }
+.marketing .mk-hero { background: radial-gradient(circle at 50% 36%, rgba(239,246,255,.86), #fff 58%); color: var(--mk-ink); }
+.marketing .mk-grid { opacity: .18; background-size: 56px 56px; }
+.marketing .mk-display { font-family: var(--font-noto-arabic), sans-serif; letter-spacing: -.075em; }
+.marketing .mk-hero h1 { background: linear-gradient(180deg, #111827 18%, #2563eb 72%, #9333ea); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.marketing .mk-hero .inline-flex.rounded-full.bg-\[\#355a52\] { background: linear-gradient(90deg, #2563eb, #7c3aed); }
+.marketing .mk-dashboard { border-radius: 24px; box-shadow: 0 28px 80px rgba(37,99,235,.16), 0 8px 24px rgba(15,23,42,.08); }
+.marketing[dir="rtl"] .mk-hero > .relative { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; }
+.marketing[dir="rtl"] .mk-hero > .relative > .mk-reveal:first-child { max-width: 720px; }
+.marketing[dir="rtl"] .mk-hero > .relative > .mk-reveal:last-child { width: min(720px, 100%); margin-top: 28px; }
+.marketing[dir="rtl"] .mk-hero .mk-dashboard { text-align: start; }
+@media (min-width: 768px) {
+  .marketing[dir="rtl"] .mk-hero > .relative > .mk-reveal:last-child { transform: scale(.86); transform-origin: top center; margin-bottom: -54px; }
+}
+.dark .marketing { --mk-paper: #111827; background: #111827; }
+.dark .marketing .mk-header { background: rgba(17,24,39,.92); border-color: rgba(255,255,255,.1); }
+.dark .marketing .mk-hero { background: radial-gradient(circle at 50% 36%, rgba(30,64,175,.2), #111827 62%); }
+
 .mk-display { font-family: var(--app-font-serif); letter-spacing: -.065em; }
 .mk-grid { background-image: linear-gradient(to right, hsl(var(--foreground) / .045) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground) / .045) 1px, transparent 1px); background-size: 42px 42px; }
 .mk-reveal { animation: arrive .65s cubic-bezier(.2,.7,.2,1) both; }
