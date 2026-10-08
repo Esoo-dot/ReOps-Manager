@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Fieldwise Operations"
+description = "An operations management workspace for multi-branch teams to coordinate people, tasks, training, service requests, and performance in English or Arabic."
+version = "1.0.0"
+id = "artifacts/ops-platform"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23761
+
+[services.development]
+run = "pnpm --filter @workspace/ops-platform run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ops-platform", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ops-platform/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23761"
+BASE_PATH = "/"

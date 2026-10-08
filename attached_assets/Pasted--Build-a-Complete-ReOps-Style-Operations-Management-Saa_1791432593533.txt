@@ -1,0 +1,2282 @@
+# Build a Complete ReOps-Style Operations Management SaaS From Scratch
+
+## ROLE
+
+You are a senior staff-level full-stack engineer, product architect, UX/UI designer, and technical lead.
+
+You are going to build a **completely new production-ready SaaS application from scratch**.
+
+The product should be inspired by the functionality, information architecture, UX quality, responsiveness, and overall product experience of:
+
+**Reference product:** https://reops.io/
+
+IMPORTANT:
+
+* This is a NEW repository.
+* Do NOT treat this as a refactor of an existing application.
+* Do NOT reuse an old dashboard architecture.
+* Build the application with a clean architecture from the beginning.
+* Use ReOps as a **product and UX reference**, not as source code.
+* Do not copy ReOps proprietary code, assets, logos, illustrations, exact branding, or copyrighted content.
+* Recreate the underlying product concepts and functionality with an original implementation and original UI.
+* The result should feel like a serious commercial SaaS product, not a demo, template, or admin dashboard.
+
+---
+
+# 1. FIRST: STUDY THE REFERENCE PRODUCT
+
+Before writing application code, thoroughly analyze:
+
+https://reops.io/
+
+Understand and reproduce the important product concepts visible on the reference site, including:
+
+* Operations management
+* Employee management
+* Branch management
+* Training
+* Training courses
+* Training plans
+* SOPs / operational procedures
+* Resources and documents
+* Checklists
+* Tasks
+* Requests
+* Tickets
+* KPIs
+* Employee performance
+* Branch performance
+* Reports
+* Analytics
+* Rewards / incentives
+* User management
+* Notifications
+* Organization management
+* Multi-branch operations
+* Franchise-oriented workflows
+* Arabic/English experience
+
+The reference site describes ReOps as a unified platform for digitizing operational procedures, automating training, and monitoring performance across branches.
+
+Do not simply copy the public landing page.
+
+Think about what the **actual SaaS application behind the marketing website** would need.
+
+---
+
+# 2. PRODUCT VISION
+
+Build:
+
+> A modern Operations Operating System for companies with employees, branches, franchises, training programs, SOPs, checklists, tasks, requests, KPIs, and performance management.
+
+The platform should allow an organization to manage its entire operational workflow from one application.
+
+The application must support:
+
+### Organization
+
+* Organizations
+* Organization settings
+* Multiple branches
+* Departments
+* Teams
+* Employees
+* Managers
+* Roles
+* Permissions
+
+### Operations
+
+* SOPs
+* Procedures
+* Tasks
+* Checklists
+* Recurring tasks
+* Operational standards
+* Resources
+* Documents
+* Announcements
+* Activity history
+
+### Training
+
+* Courses
+* Lessons
+* Training plans
+* Learning paths
+* Assignments
+* Quizzes
+* Exams
+* Certificates
+* Employee progress
+* Training completion
+* Training analytics
+
+### Performance
+
+* KPIs
+* Goals
+* Employee performance
+* Branch performance
+* Team performance
+* KPI targets
+* KPI measurements
+* Performance trends
+* Performance reports
+
+### Requests / Tickets
+
+* Requests
+* Tickets
+* Categories
+* Priorities
+* Assignments
+* Statuses
+* Comments
+* Attachments
+* SLA-like tracking
+* Activity timeline
+
+### Rewards
+
+* Rewards
+* Incentives
+* Employee achievements
+* Points
+* Recognition
+* Leaderboards
+
+### Analytics
+
+* Organization analytics
+* Branch analytics
+* Employee analytics
+* Training analytics
+* KPI analytics
+* Task analytics
+* Request analytics
+* Performance reports
+* Exportable reports
+
+---
+
+# 3. TECHNOLOGY STACK
+
+Use a modern production stack.
+
+### Frontend
+
+* Next.js latest stable version
+* React latest stable version
+* TypeScript
+* App Router
+* Tailwind CSS
+* shadcn/ui
+* Radix UI where appropriate
+* Lucide icons
+* Recharts or another high-quality charting library
+
+### Backend
+
+Prefer a clean Next.js full-stack architecture unless there is a strong reason to separate the backend.
+
+Use:
+
+* Route Handlers / Server Actions where appropriate
+* Service layer
+* Repository layer
+* Domain layer
+* Validation layer
+
+### Database
+
+Use:
+
+* PostgreSQL
+* Prisma ORM
+
+Design the database properly for:
+
+* organizations
+* branches
+* departments
+* users
+* employees
+* roles
+* permissions
+* courses
+* lessons
+* training plans
+* enrollments
+* SOPs
+* documents
+* checklists
+* checklist runs
+* tasks
+* requests
+* comments
+* attachments
+* KPIs
+* KPI measurements
+* goals
+* rewards
+* notifications
+* audit logs
+
+Do not create a flat database structure.
+
+Design relationships properly.
+
+---
+
+# 4. ARCHITECTURE
+
+Use a scalable architecture.
+
+Recommended structure:
+
+```text
+src/
+  app/
+    (marketing)/
+    (auth)/
+    (dashboard)/
+    api/
+
+  components/
+    ui/
+    layout/
+    charts/
+    tables/
+    forms/
+    feedback/
+
+  features/
+    dashboard/
+    employees/
+    branches/
+    training/
+    courses/
+    training-plans/
+    sops/
+    checklists/
+    tasks/
+    requests/
+    kpis/
+    performance/
+    rewards/
+    reports/
+    notifications/
+    settings/
+    users/
+
+  lib/
+    auth/
+    db/
+    permissions/
+    validation/
+    utils/
+    storage/
+
+  server/
+    services/
+    repositories/
+    actions/
+
+  types/
+
+  config/
+
+  hooks/
+```
+
+Organize code by domain.
+
+Avoid a giant `/components` folder containing the entire application.
+
+---
+
+# 5. MULTI-TENANT ARCHITECTURE
+
+This must be a real SaaS.
+
+Every organization must have isolated data.
+
+Core concept:
+
+```text
+Organization
+    ↓
+Branches
+    ↓
+Departments / Teams
+    ↓
+Employees / Users
+```
+
+Every organization-owned record must be associated with an organization.
+
+Implement proper tenant isolation.
+
+Never rely only on frontend filtering for security.
+
+---
+
+# 6. AUTHENTICATION
+
+Build complete authentication.
+
+Support:
+
+* Sign up
+* Login
+* Logout
+* Forgot password
+* Reset password
+* Email verification
+* Session management
+* Protected routes
+* Organization onboarding
+* Invite employees
+* Accept invitation
+* Change password
+* Profile settings
+
+Use secure authentication.
+
+Prefer secure HTTP-only cookies for sessions.
+
+Never store sensitive authentication tokens in localStorage.
+
+---
+
+# 7. AUTHORIZATION
+
+Implement RBAC.
+
+Example roles:
+
+```text
+Super Admin
+Organization Owner
+Organization Admin
+Operations Manager
+Branch Manager
+HR Manager
+Trainer
+Employee
+```
+
+Create a permission system rather than hardcoding role checks everywhere.
+
+Example permissions:
+
+```text
+employees.read
+employees.create
+employees.update
+employees.delete
+
+branches.read
+branches.manage
+
+training.read
+training.manage
+
+courses.create
+courses.publish
+
+sops.read
+sops.manage
+
+tasks.read
+tasks.manage
+
+requests.read
+requests.manage
+
+kpis.read
+kpis.manage
+
+reports.read
+reports.export
+
+users.manage
+settings.manage
+```
+
+Permission checks must exist on the server.
+
+---
+
+# 8. ONBOARDING
+
+Create a polished onboarding flow.
+
+After registration:
+
+### Step 1
+
+Create organization.
+
+### Step 2
+
+Organization details.
+
+### Step 3
+
+Create first branch.
+
+### Step 4
+
+Choose industry.
+
+Examples:
+
+* Restaurants
+* Retail
+* Healthcare
+* Hospitality
+* Education
+* Services
+* Franchise
+* Other
+
+### Step 5
+
+Invite employees.
+
+### Step 6
+
+Choose initial modules.
+
+### Step 7
+
+Enter application.
+
+Make onboarding feel like a real commercial SaaS.
+
+---
+
+# 9. APPLICATION SHELL
+
+Create a premium SaaS application shell.
+
+Desktop:
+
+```text
+┌────────────────────────────────────────────────────┐
+│ Topbar                                              │
+├──────────────┬─────────────────────────────────────┤
+│              │                                     │
+│ Sidebar      │ Main Content                        │
+│              │                                     │
+│              │                                     │
+│              │                                     │
+└──────────────┴─────────────────────────────────────┘
+```
+
+Sidebar should include:
+
+### Overview
+
+* Dashboard
+
+### Operations
+
+* Tasks
+* Checklists
+* SOPs
+* Resources
+* Requests
+
+### People
+
+* Employees
+* Teams
+* Branches
+
+### Training
+
+* Courses
+* Training Plans
+* Learning Progress
+
+### Performance
+
+* KPIs
+* Goals
+* Performance
+* Rewards
+
+### Analytics
+
+* Reports
+* Analytics
+
+### Administration
+
+* Users
+* Roles & Permissions
+* Organization
+* Settings
+
+Sidebar should support:
+
+* Collapse
+* Expand
+* Active state
+* Nested navigation
+* Icons
+* Tooltips
+* Mobile drawer
+
+---
+
+# 10. DASHBOARD
+
+The dashboard should feel like a real operations command center.
+
+Include:
+
+### Header
+
+* Greeting
+* Current date
+* Organization selector
+* Branch selector
+* Notifications
+* User menu
+
+### KPI cards
+
+Examples:
+
+* Total Employees
+* Active Branches
+* Training Completion
+* Tasks Completed
+* Open Requests
+* KPI Achievement
+
+### Charts
+
+Include:
+
+* Performance trend
+* Training progress
+* Branch comparison
+* Task completion
+* KPI achievement
+
+### Operational widgets
+
+* My Tasks
+* Pending Requests
+* Upcoming Training
+* Recent Activity
+* Recent Announcements
+* Employees needing attention
+* Branches needing attention
+
+### Quick actions
+
+Examples:
+
+* Add employee
+* Create task
+* Create SOP
+* Create training course
+* Create checklist
+* Create request
+
+The dashboard must be configurable and responsive.
+
+---
+
+# 11. EMPLOYEES
+
+Create a complete employee management system.
+
+List page:
+
+* Search
+* Filters
+* Branch
+* Department
+* Role
+* Status
+* Training status
+* Performance
+* Sorting
+* Pagination
+
+Employee profile:
+
+```text
+Profile
+Overview
+Tasks
+Training
+Performance
+KPIs
+Checklists
+Requests
+Activity
+Documents
+```
+
+Show:
+
+* Avatar
+* Name
+* Position
+* Branch
+* Department
+* Joining date
+* Status
+* Manager
+* Training completion
+* KPI score
+* Performance score
+
+Provide actions:
+
+* Edit
+* Assign training
+* Assign task
+* Assign checklist
+* Create request
+* View activity
+
+---
+
+# 12. BRANCHES
+
+Create branch management.
+
+Branch list:
+
+* Branch name
+* Location
+* Manager
+* Employees
+* Performance
+* KPI score
+* Training completion
+* Open requests
+
+Branch detail:
+
+```text
+Overview
+Employees
+Tasks
+Checklists
+SOPs
+Training
+KPIs
+Performance
+Requests
+Reports
+Activity
+```
+
+Include branch comparison analytics.
+
+---
+
+# 13. SOP MANAGEMENT
+
+Build a serious SOP system.
+
+Users should be able to:
+
+* Create SOP
+* Edit SOP
+* Publish SOP
+* Archive SOP
+* Assign SOP
+* Version SOP
+* Categorize SOP
+* Attach files
+* Add images/videos
+* Add steps
+* Add instructions
+* Require acknowledgement
+
+SOP status:
+
+```text
+Draft
+Review
+Published
+Archived
+```
+
+Track:
+
+* Who created it
+* Who updated it
+* Version
+* Published date
+* Acknowledgements
+* Completion
+
+---
+
+# 14. CHECKLISTS
+
+Create reusable checklist templates.
+
+Checklist:
+
+```text
+Checklist
+    ↓
+Sections
+    ↓
+Items
+```
+
+Support:
+
+* Required items
+* Optional items
+* Notes
+* Photos
+* Attachments
+* Pass/fail
+* Numeric values
+* Comments
+
+Support recurring checklists:
+
+* Daily
+* Weekly
+* Monthly
+* Custom schedule
+
+Track:
+
+* Completion
+* Score
+* Failed items
+* Assigned employee
+* Branch
+* Date
+
+---
+
+# 15. TASK MANAGEMENT
+
+Create a complete task system.
+
+Task fields:
+
+* Title
+* Description
+* Assignee
+* Creator
+* Branch
+* Department
+* Priority
+* Status
+* Due date
+* Recurrence
+* Attachments
+* Comments
+* Checklist
+* Activity
+
+Statuses:
+
+```text
+Todo
+In Progress
+Blocked
+Completed
+Cancelled
+```
+
+Views:
+
+* List
+* Board
+* Calendar
+
+---
+
+# 16. REQUESTS / TICKETS
+
+Build an internal request system.
+
+Examples:
+
+* Maintenance
+* HR
+* IT
+* Operations
+* Procurement
+* General
+
+Features:
+
+* Create request
+* Category
+* Priority
+* Assignment
+* Status
+* Comments
+* Attachments
+* Activity timeline
+* Internal notes
+
+Statuses:
+
+```text
+Open
+In Progress
+Waiting
+Resolved
+Closed
+```
+
+Create useful request analytics.
+
+---
+
+# 17. TRAINING PLATFORM
+
+Training is a major part of the product.
+
+Create:
+
+### Courses
+
+* Course title
+* Description
+* Cover image
+* Instructor
+* Duration
+* Difficulty
+* Category
+* Lessons
+* Quizzes
+* Certificate
+* Status
+
+### Lessons
+
+Support:
+
+* Video
+* Text
+* Images
+* PDF
+* Attachments
+* External resources
+
+### Quizzes
+
+Support:
+
+* Multiple choice
+* True/false
+* Passing score
+* Attempts
+* Results
+
+### Training plans
+
+Allow managers to create learning plans.
+
+Example:
+
+```text
+New Employee Training Plan
+
+Week 1
+├── Company Introduction
+├── Safety SOP
+├── Branch Procedures
+└── Customer Service
+
+Week 2
+├── Operations
+├── Product Knowledge
+└── Assessment
+```
+
+Track employee progress.
+
+---
+
+# 18. TRAINING ANALYTICS
+
+Include:
+
+* Completion percentage
+* Courses completed
+* Courses overdue
+* Average score
+* Training hours
+* Employee ranking
+* Branch comparison
+* Department comparison
+
+Charts should be visually clear.
+
+---
+
+# 19. KPI MANAGEMENT
+
+Build a proper KPI system.
+
+KPI:
+
+```text
+Name
+Description
+Category
+Target
+Current Value
+Unit
+Frequency
+Owner
+Branch
+Employee
+Status
+```
+
+Support:
+
+* Daily
+* Weekly
+* Monthly
+* Quarterly
+* Yearly
+
+Statuses:
+
+```text
+Excellent
+On Track
+At Risk
+Critical
+```
+
+Create KPI dashboards.
+
+---
+
+# 20. PERFORMANCE MANAGEMENT
+
+Build performance pages for:
+
+### Organization
+
+Overall performance.
+
+### Branch
+
+Branch ranking and trends.
+
+### Employee
+
+Individual performance.
+
+Show:
+
+* KPI score
+* Task completion
+* Training completion
+* Checklist score
+* Goals
+* Achievements
+* Manager feedback
+
+Create a performance score model that is configurable.
+
+---
+
+# 21. REWARDS / INCENTIVES
+
+Create a rewards module.
+
+Support:
+
+* Points
+* Achievements
+* Badges
+* Rewards
+* Leaderboards
+* Recognition
+
+Employees should see:
+
+* Current points
+* Rank
+* Achievements
+* Available rewards
+* History
+
+Managers can award recognition.
+
+---
+
+# 22. REPORTS
+
+Build a report center.
+
+Reports:
+
+* Employee report
+* Branch report
+* Training report
+* KPI report
+* Performance report
+* Task report
+* Request report
+* Checklist report
+
+Support:
+
+* Date filters
+* Branch filters
+* Employee filters
+* Department filters
+* Export CSV
+* Export PDF where appropriate
+
+---
+
+# 23. NOTIFICATIONS
+
+Create a notification center.
+
+Support:
+
+* Task assigned
+* Task overdue
+* Training assigned
+* Training overdue
+* Request updated
+* KPI warning
+* Checklist failure
+* Announcement
+* Employee invitation
+
+Include:
+
+* unread count
+* mark read
+* mark all read
+* notification preferences
+
+---
+
+# 24. ACTIVITY / AUDIT LOG
+
+Every important action should generate an activity event.
+
+Examples:
+
+```text
+Ahmed created an SOP
+Sara completed training
+Branch Riyadh updated KPI
+Manager assigned a checklist
+User changed employee status
+```
+
+Create:
+
+* Recent activity
+* Entity activity
+* Organization audit log
+
+---
+
+# 25. FILES / DOCUMENTS
+
+Create a resource/document system.
+
+Support:
+
+* PDF
+* Images
+* Videos
+* Documents
+
+Metadata:
+
+* Name
+* Category
+* Branch
+* Department
+* Owner
+* Visibility
+* Created date
+
+Use an abstraction for file storage so storage provider can change later.
+
+---
+
+# 26. SEARCH
+
+Create global search.
+
+Search across:
+
+* Employees
+* Branches
+* Tasks
+* SOPs
+* Courses
+* Training plans
+* Requests
+* Documents
+
+Add keyboard shortcut:
+
+```text
+⌘ K
+```
+
+or:
+
+```text
+Ctrl K
+```
+
+Create a command palette.
+
+---
+
+# 27. MOBILE EXPERIENCE
+
+The application must be genuinely responsive.
+
+Do NOT simply shrink desktop layouts.
+
+Design specifically for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+Mobile:
+
+* Bottom navigation where appropriate
+* Drawer sidebar
+* Touch-friendly buttons
+* Mobile-friendly tables
+* Cards instead of impossible wide tables
+* Swipe/action patterns where useful
+* Responsive charts
+* Responsive forms
+* Sticky mobile actions
+
+Test at:
+
+```text
+320px
+375px
+390px
+430px
+768px
+1024px
+1280px
+1440px
+1920px
+```
+
+No horizontal overflow.
+
+---
+
+# 28. RTL + ARABIC
+
+Arabic must be a first-class experience.
+
+Support:
+
+```text
+Arabic
+English
+```
+
+Implement proper i18n.
+
+Do not just translate strings.
+
+The layout must support RTL correctly.
+
+Use logical CSS properties:
+
+```text
+margin-inline
+padding-inline
+inset-inline
+border-inline
+```
+
+Avoid hardcoded left/right positioning wherever possible.
+
+Test:
+
+* RTL sidebar
+* RTL tables
+* RTL forms
+* RTL dropdowns
+* RTL charts
+* RTL dialogs
+* RTL navigation
+* RTL mobile layout
+
+---
+
+# 29. DESIGN SYSTEM
+
+Create an original premium SaaS design system inspired by the quality of ReOps but with original visual identity.
+
+Design principles:
+
+* Minimal
+* Professional
+* Calm
+* Premium
+* Enterprise
+* Spacious
+* Highly readable
+* Strong hierarchy
+* Excellent typography
+* Subtle borders
+* Controlled shadows
+* Meaningful color usage
+
+Avoid:
+
+* excessive gradients
+* excessive glassmorphism
+* huge decorative elements
+* noisy backgrounds
+* excessive animations
+* template-looking UI
+
+Create reusable tokens for:
+
+* colors
+* typography
+* spacing
+* radius
+* shadows
+* borders
+* status colors
+
+---
+
+# 30. COMPONENT SYSTEM
+
+Build reusable components.
+
+Examples:
+
+```text
+AppShell
+Sidebar
+Topbar
+MobileNavigation
+PageHeader
+Breadcrumbs
+KpiCard
+MetricCard
+ChartCard
+DataTable
+FilterBar
+SearchInput
+CommandMenu
+StatusBadge
+PriorityBadge
+Avatar
+AvatarGroup
+EmptyState
+LoadingState
+ErrorState
+Skeleton
+ConfirmDialog
+Modal
+Drawer
+Sheet
+Tabs
+Timeline
+ActivityFeed
+ProgressBar
+ProgressRing
+DateRangePicker
+FileUploader
+RichTextEditor
+FormField
+Pagination
+```
+
+Do not duplicate components between modules.
+
+---
+
+# 31. UX STATES
+
+Every feature must support:
+
+### Loading
+
+Use skeletons.
+
+### Empty
+
+Create meaningful empty states.
+
+Example:
+
+> No training courses yet
+> Create your first course to start training your team.
+
+### Error
+
+Provide useful error messages and retry actions.
+
+### Success
+
+Use toast notifications where appropriate.
+
+### Permission denied
+
+Show proper authorization UI.
+
+Never leave blank screens.
+
+---
+
+# 32. SEO
+
+The public-facing website must have excellent SEO.
+
+Implement:
+
+* Metadata API
+* Dynamic metadata
+* Title templates
+* Meta descriptions
+* Canonical URLs
+* Open Graph
+* Twitter cards
+* Sitemap
+* robots.txt
+* Structured data / JSON-LD
+* Semantic HTML
+* Proper heading hierarchy
+* Image alt text
+* Fast loading
+* Core Web Vitals optimization
+
+Create SEO-friendly public pages:
+
+```text
+/
+ /features
+ /solutions
+ /industries
+ /pricing
+ /about
+ /contact
+ /faq
+ /blog
+```
+
+Use appropriate structured data:
+
+* Organization
+* SoftwareApplication
+* FAQPage
+* WebSite
+* BreadcrumbList
+
+Do not expose private dashboard pages to search engines.
+
+---
+
+# 33. MARKETING WEBSITE
+
+Build a complete marketing site inspired by the quality and structure of ReOps.
+
+Include:
+
+### Hero
+
+Clear value proposition.
+
+### Trusted companies
+
+Logo area.
+
+### Product features
+
+Show:
+
+* Operations
+* Training
+* SOPs
+* Checklists
+* KPIs
+* Performance
+* Requests
+* Reports
+
+### Product screenshots
+
+Use original UI screenshots from our own application.
+
+### Benefits
+
+Explain measurable operational benefits.
+
+### Comparison section
+
+Traditional operations vs digital operations.
+
+### Industries
+
+Show supported industries.
+
+### Pricing
+
+Professional pricing page.
+
+### ROI calculator
+
+Build an interactive calculator.
+
+Inputs can include:
+
+* Number of branches
+* Employees per branch
+* Training cost
+* Printing cost
+* Operational costs
+
+Calculate estimated savings.
+
+### Services
+
+Show optional professional services.
+
+### Testimonials
+
+Create a structure ready for real customer testimonials.
+
+### FAQ
+
+SEO-friendly FAQ.
+
+### CTA
+
+Multiple conversion points.
+
+---
+
+# 34. PRICING
+
+Build pricing architecture that can later connect to Stripe.
+
+Plans:
+
+```text
+Starter
+Growth
+Business
+Enterprise
+```
+
+Features can include:
+
+* Branch count
+* Employee count
+* Training
+* SOPs
+* Analytics
+* Reports
+* Permissions
+* Support
+
+Do not hardcode pricing logic throughout the application.
+
+Centralize plan configuration.
+
+---
+
+# 35. BILLING ARCHITECTURE
+
+Prepare for:
+
+* Stripe
+* subscriptions
+* invoices
+* payment status
+* trial
+* plan upgrades
+* plan downgrades
+* cancellation
+* usage limits
+
+Even if payment integration is initially disabled, architect the system so Stripe can be added without rewriting the application.
+
+---
+
+# 36. PERFORMANCE
+
+The application must be fast.
+
+Use:
+
+* Server Components by default
+* Client Components only when needed
+* Server-side data fetching
+* Proper caching
+* Pagination
+* Lazy loading
+* Code splitting
+* Image optimization
+* Optimized fonts
+* Streaming where useful
+
+Avoid:
+
+* giant client components
+* fetching everything on page load
+* unnecessary useEffect
+* unnecessary global state
+* duplicated API calls
+
+---
+
+# 37. ACCESSIBILITY
+
+Target WCAG 2.2 AA.
+
+Support:
+
+* Keyboard navigation
+* Focus states
+* Screen readers
+* ARIA where required
+* Color contrast
+* Reduced motion
+* Semantic HTML
+* Accessible forms
+* Accessible dialogs
+* Accessible tables
+
+Never rely on color alone to communicate status.
+
+---
+
+# 38. SECURITY
+
+Implement production security.
+
+Include:
+
+* secure authentication
+* authorization
+* server-side permission checks
+* input validation
+* Zod validation
+* CSRF protection where relevant
+* rate limiting
+* secure headers
+* XSS protection
+* SQL injection protection through ORM
+* safe file uploads
+* file type validation
+* file size limits
+* audit logs
+* secure cookies
+* environment variable protection
+
+Never expose secrets to the client.
+
+---
+
+# 39. DATABASE
+
+Create a serious relational schema.
+
+At minimum model:
+
+```text
+Organization
+OrganizationSettings
+Subscription
+User
+Role
+Permission
+RolePermission
+Invitation
+
+Branch
+Department
+Team
+Employee
+
+Course
+Lesson
+Quiz
+Question
+Enrollment
+TrainingPlan
+TrainingPlanItem
+Certificate
+
+SOP
+SOPVersion
+SOPAcknowledgement
+
+Checklist
+ChecklistItem
+ChecklistAssignment
+ChecklistSubmission
+
+Task
+TaskComment
+TaskAttachment
+
+Request
+RequestComment
+RequestAttachment
+
+KPI
+KPITarget
+KPIMeasurement
+Goal
+
+Reward
+Achievement
+EmployeeReward
+
+Notification
+NotificationPreference
+
+Document
+ActivityLog
+AuditLog
+```
+
+Design proper foreign keys and indexes.
+
+Add indexes for common queries.
+
+---
+
+# 40. API DESIGN
+
+Create clean typed APIs.
+
+Do not scatter random fetch calls throughout components.
+
+Use:
+
+```text
+UI
+ ↓
+Typed client/data layer
+ ↓
+Server action / API
+ ↓
+Service
+ ↓
+Repository
+ ↓
+Database
+```
+
+Validate all external input.
+
+Return consistent API responses.
+
+Example:
+
+```ts
+{
+  success: true,
+  data: ...
+}
+```
+
+or appropriate typed error responses.
+
+---
+
+# 41. TESTING
+
+Include:
+
+### Unit tests
+
+For:
+
+* business logic
+* permissions
+* KPI calculations
+* training calculations
+* reward calculations
+* validation
+
+### Integration tests
+
+For:
+
+* authentication
+* organization isolation
+* CRUD operations
+* permissions
+
+### E2E tests
+
+Use Playwright for critical flows:
+
+```text
+Sign up
+Login
+Create organization
+Create branch
+Invite employee
+Create course
+Assign training
+Complete lesson
+Create SOP
+Create checklist
+Create task
+Create request
+Create KPI
+View dashboard
+```
+
+---
+
+# 42. SEED DATA
+
+Create realistic development seed data.
+
+Example organization:
+
+```text
+Acme Operations
+```
+
+Branches:
+
+```text
+Cairo
+Alexandria
+Tanta
+Mansoura
+```
+
+Users:
+
+* Owner
+* Admin
+* Operations Manager
+* Branch Managers
+* Employees
+
+Generate realistic:
+
+* employees
+* courses
+* training plans
+* SOPs
+* checklists
+* tasks
+* requests
+* KPIs
+* rewards
+* activity
+
+The dashboard should look alive immediately after running the seed.
+
+Do NOT use empty lorem ipsum data.
+
+---
+
+# 43. DEMO MODE
+
+Create a polished demo environment.
+
+A new developer should be able to run:
+
+```bash
+pnpm install
+pnpm db:setup
+pnpm db:seed
+pnpm dev
+```
+
+and immediately see a fully populated application.
+
+Provide demo credentials in development documentation.
+
+---
+
+# 44. DATA IMPORT / FUTURE SCRAPING
+
+Do not implement scraping directly inside React components.
+
+If external data sources are eventually needed, create:
+
+```text
+External Source
+      ↓
+Fetcher
+      ↓
+Parser
+      ↓
+Validator
+      ↓
+Normalizer
+      ↓
+Domain Model
+      ↓
+Repository
+      ↓
+Database
+```
+
+Use Zod validation.
+
+The UI must never know whether data came from:
+
+* database
+* API
+* scraper
+* third-party service
+
+This separation is mandatory.
+
+---
+
+# 45. ERROR HANDLING
+
+Implement:
+
+* global error boundary
+* route-level error boundaries
+* API error handling
+* database error handling
+* validation errors
+* authorization errors
+* not-found pages
+* retry behavior
+
+Create polished:
+
+```text
+404
+500
+Unauthorized
+Forbidden
+Offline / network error
+```
+
+pages/states.
+
+---
+
+# 46. OBSERVABILITY
+
+Prepare architecture for:
+
+* logging
+* error tracking
+* performance monitoring
+* audit logs
+
+Use structured logs.
+
+Do not log passwords, tokens, or sensitive information.
+
+---
+
+# 47. DOCUMENTATION
+
+Create:
+
+```text
+README.md
+ARCHITECTURE.md
+DATABASE.md
+SECURITY.md
+CONTRIBUTING.md
+ENVIRONMENT.md
+```
+
+Document:
+
+* setup
+* environment variables
+* database
+* migrations
+* seed
+* architecture
+* authentication
+* permissions
+* testing
+* deployment
+
+---
+
+# 48. ENVIRONMENT
+
+Create:
+
+```text
+.env.example
+```
+
+Document variables such as:
+
+```text
+DATABASE_URL
+AUTH_SECRET
+NEXT_PUBLIC_APP_URL
+STORAGE_PROVIDER
+STORAGE_BUCKET
+STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET
+EMAIL_PROVIDER
+```
+
+Do not commit secrets.
+
+---
+
+# 49. CODE QUALITY
+
+Use strict TypeScript.
+
+Rules:
+
+* no unnecessary `any`
+* no duplicated business logic
+* no duplicated components
+* no giant files
+* no magic strings
+* no hardcoded configuration
+* no unsafe casts unless justified
+* no dead code
+* no console spam
+* no TODO placeholders for core functionality
+
+Prefer small, composable modules.
+
+---
+
+# 50. RESPONSIVE DESIGN REQUIREMENT
+
+Do not consider the project complete until every major screen works on:
+
+```text
+Mobile
+Tablet
+Laptop
+Desktop
+Large desktop
+```
+
+Test:
+
+* dashboard
+* tables
+* forms
+* charts
+* profile pages
+* course pages
+* SOP pages
+* checklist pages
+* requests
+* reports
+* settings
+* marketing pages
+
+---
+
+# 51. VISUAL QUALITY BAR
+
+The result should look like something a company could launch commercially.
+
+It must NOT look like:
+
+* a generic admin template
+* a Tailwind demo
+* a shadcn component gallery
+* a developer prototype
+* a CRUD generator
+
+Pay special attention to:
+
+* spacing
+* typography
+* hierarchy
+* alignment
+* density
+* empty states
+* loading states
+* interaction feedback
+* responsive behavior
+* charts
+* tables
+* forms
+* navigation
+
+Every page should have intentional UX.
+
+---
+
+# 52. DEVELOPMENT PROCESS
+
+Follow this order.
+
+## Phase 1 — Foundation
+
+Create:
+
+* Next.js application
+* TypeScript
+* Tailwind
+* shadcn/ui
+* database
+* Prisma
+* authentication foundation
+* i18n
+* theme
+* architecture
+* linting
+* formatting
+* testing
+
+## Phase 2 — Design System
+
+Build:
+
+* AppShell
+* Sidebar
+* Topbar
+* navigation
+* buttons
+* forms
+* tables
+* cards
+* dialogs
+* drawers
+* status components
+* charts
+* loading states
+* empty states
+
+## Phase 3 — SaaS Core
+
+Build:
+
+* organization
+* users
+* roles
+* permissions
+* branches
+* departments
+* employees
+* onboarding
+
+## Phase 4 — Operations
+
+Build:
+
+* tasks
+* checklists
+* SOPs
+* resources
+* requests
+
+## Phase 5 — Training
+
+Build:
+
+* courses
+* lessons
+* quizzes
+* training plans
+* enrollments
+* certificates
+* progress
+
+## Phase 6 — Performance
+
+Build:
+
+* KPIs
+* goals
+* performance
+* rewards
+* leaderboards
+
+## Phase 7 — Analytics
+
+Build:
+
+* dashboards
+* reports
+* charts
+* exports
+
+## Phase 8 — Marketing
+
+Build:
+
+* landing page
+* features
+* solutions
+* industries
+* pricing
+* ROI calculator
+* FAQ
+* contact
+* blog structure
+
+## Phase 9 — Production Quality
+
+Implement:
+
+* SEO
+* accessibility
+* performance
+* security
+* tests
+* error handling
+* audit logs
+* responsive polish
+
+---
+
+# 53. IMPORTANT IMPLEMENTATION RULE
+
+Do NOT build everything as fake frontend screens.
+
+Every major module should have:
+
+```text
+UI
++
+Types
++
+Validation
++
+Database model
++
+Service
++
+Repository
++
+API/server action
++
+Loading state
++
+Error state
++
+Empty state
++
+Permissions
+```
+
+If a feature cannot reasonably be completed immediately, architect it correctly and clearly isolate the unfinished integration.
+
+Do not pretend a fake button is functional.
+
+---
+
+# 54. DO NOT ASK FOR CONSTANT CONFIRMATION
+
+You have enough requirements to make architectural decisions.
+
+Make reasonable senior-engineering decisions yourself.
+
+Only ask a question if continuing without the answer would create a major irreversible architectural problem.
+
+Otherwise proceed.
+
+---
+
+# 55. FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+* The application runs locally.
+* Database migrations work.
+* Seed data works.
+* Authentication works.
+* Organizations work.
+* Branches work.
+* Employees work.
+* RBAC works.
+* Dashboard works.
+* Tasks work.
+* Checklists work.
+* SOPs work.
+* Requests work.
+* Courses work.
+* Training plans work.
+* Training progress works.
+* KPIs work.
+* Performance works.
+* Rewards work.
+* Reports work.
+* Notifications work.
+* Audit logs work.
+* Search works.
+* Arabic works.
+* English works.
+* RTL works.
+* Mobile works.
+* Tablet works.
+* Desktop works.
+* SEO works.
+* Sitemap works.
+* robots.txt works.
+* Metadata works.
+* Accessibility is considered.
+* Security is considered.
+* Tests exist.
+* Documentation exists.
+* No major page has fake placeholder UI.
+* No major page has broken responsive behavior.
+* No major feature bypasses server-side authorization.
+* No major business logic exists only inside React components.
+
+---
+
+# 56. MOST IMPORTANT PRODUCT PRINCIPLE
+
+Do not build:
+
+> "A dashboard that looks like ReOps."
+
+Build:
+
+> "A complete operations management SaaS that provides the same category of product experience and capabilities as ReOps, with an original implementation, scalable architecture, excellent UX, and production quality."
+
+The final result should feel like a **real SaaS product**, not a clone, mockup, or template.
+
+Start by creating the new repository and establishing the architecture and design system.
+
+Then implement the product progressively until the entire application is functional.

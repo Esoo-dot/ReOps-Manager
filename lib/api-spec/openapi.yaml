@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: operations
+    description: Operations workspace records and dashboard summary
 paths:
   /healthz:
     get:
@@ -24,6 +26,91 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /operations/records:
+    get:
+      operationId: listOperationsRecords
+      tags: [operations]
+      summary: List workspace records
+      parameters:
+        - in: query
+          name: kind
+          schema:
+            $ref: "#/components/schemas/RecordKind"
+      responses:
+        "200":
+          description: Workspace records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OperationsRecord"
+    post:
+      operationId: createOperationsRecord
+      tags: [operations]
+      summary: Create a workspace record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OperationsRecordInput"
+      responses:
+        "201":
+          description: Created record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OperationsRecord"
+  /operations/records/{id}:
+    patch:
+      operationId: updateOperationsRecord
+      tags: [operations]
+      summary: Update a workspace record
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OperationsRecordUpdate"
+      responses:
+        "200":
+          description: Updated record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OperationsRecord"
+    delete:
+      operationId: deleteOperationsRecord
+      tags: [operations]
+      summary: Delete a workspace record
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Record deleted
+  /operations/summary:
+    get:
+      operationId: getOperationsSummary
+      tags: [operations]
+      summary: Get dashboard metrics
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OperationsSummary"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +120,62 @@ components:
           type: string
       required:
         - status
+    RecordKind:
+      type: string
+      enum: [task, request, employee, branch, training, sop, checklist, kpi]
+    OperationsRecord:
+      type: object
+      required: [id, kind, title, detail, status, assignee, branch, department, priority, dueDate, progress, createdAt]
+      properties:
+        id: { type: integer }
+        kind: { $ref: "#/components/schemas/RecordKind" }
+        title: { type: string }
+        detail: { type: string }
+        status: { type: string }
+        assignee: { type: string }
+        branch: { type: string }
+        department: { type: string }
+        priority: { type: string }
+        dueDate: { type: ["string", "null"], format: date }
+        progress: { type: integer }
+        createdAt: { type: string, format: date-time }
+    OperationsRecordInput:
+      type: object
+      required: [kind, title]
+      properties:
+        kind: { $ref: "#/components/schemas/RecordKind" }
+        title: { type: string, minLength: 1 }
+        detail: { type: string }
+        status: { type: string }
+        assignee: { type: string }
+        branch: { type: string }
+        department: { type: string }
+        priority: { type: string }
+        dueDate: { type: ["string", "null"], format: date }
+        progress: { type: integer, minimum: 0, maximum: 100 }
+    OperationsRecordUpdate:
+      type: object
+      properties:
+        title: { type: string, minLength: 1 }
+        detail: { type: string }
+        status: { type: string }
+        assignee: { type: string }
+        branch: { type: string }
+        department: { type: string }
+        priority: { type: string }
+        dueDate: { type: ["string", "null"], format: date }
+        progress: { type: integer, minimum: 0, maximum: 100 }
+    OperationsSummary:
+      type: object
+      required: [employees, branches, tasksOpen, requestsOpen, trainingCompletion, kpiAchievement, recentActivity]
+      properties:
+        employees: { type: integer }
+        branches: { type: integer }
+        tasksOpen: { type: integer }
+        requestsOpen: { type: integer }
+        trainingCompletion: { type: integer }
+        kpiAchievement: { type: integer }
+        recentActivity:
+          type: array
+          items: { $ref: "#/components/schemas/OperationsRecord" }
 
