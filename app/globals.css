@@ -38,6 +38,15 @@
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-destructive-border: var(--destructive-border);
+  --color-brand: hsl(var(--brand));
+  --color-brand-strong: hsl(var(--brand-strong));
+  --color-brand-soft: hsl(var(--brand-soft));
+  --color-brand-ink: hsl(var(--brand-ink));
+  --color-brass: hsl(var(--brass));
+  --color-brass-soft: hsl(var(--brass-soft));
+  --color-blue-soft: hsl(var(--blue-soft));
+  --color-success-soft: hsl(var(--success-soft));
+  --color-success-ink: hsl(var(--success-ink));
 
   --color-chart-1: hsl(var(--chart-1));
   --color-chart-2: hsl(var(--chart-2));
@@ -78,6 +87,16 @@
   --elevate-1: rgba(0, 0, 0, 0.03);
   --elevate-2: rgba(0, 0, 0, 0.08);
 
+  /* ReOps brand palette: deep evergreen, warm paper, and brass accent */
+  --brand: 162 26% 28%;
+  --brand-strong: 163 29% 23%;
+  --brand-soft: 138 19% 92%;
+  --brand-ink: 204 24% 17%;
+  --brass: 38 52% 54%;
+  --brass-soft: 38 53% 91%;
+  --blue-soft: 203 22% 93%;
+  --success-soft: 132 24% 92%;
+  --success-ink: 145 25% 37%;
   --background: 42 36% 96%;
   --foreground: 204 26% 17%;
   --border: 35 19% 87%;

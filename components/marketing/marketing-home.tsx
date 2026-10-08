@@ -92,11 +92,11 @@ const copy = {
     ],
     platformEyebrow: 'مساحة عمل واحدة مترابطة',
     platformTitle: 'اجعل الخطوة التالية أوضح.',
-    platformIntro: 'تجمع ريوبس عناصر التشغيل اليومية في عرض مشترك. ابدأ بما تحتاجه الفرق اليوم، ثم ابنِ إيقاعاً أكثر ثباتاً بين المواقع.',
+    platformIntro: 'تجمع ريوبس عناصر التشغيل اليومية في عرض مشترك. ابدأ بما تحتاجه الفرق اليوم، ��م ابنِ إيقاعاً أكثر ثباتاً بين المواقع.',
     modules: [
       ['العمل مستمر', 'للمهام والطلبات مكان واضح ومسؤول وحالة يمكن للفريق متابعتها.', 'المهام · الطلبات'],
       ['معيار قابل للاستخدام', 'أبقِ الإجراءات وقوائم التحقق ق����يبة من اللحظات التي ترشدها.', 'الإجراءات · قوائم التحقق'],
-      ['الأشخاص قبل الأرقام', 'اربط سجلات الموظفين والفروع بالعمل الذي يجري حولهم.', 'الأشخاص · الفروع'],
+      ['الأشخاص قبل الأرقام', 'اربط سجلات الموظفين والفروع با��عمل الذي يجري حولهم.', 'الأشخاص · الفروع'],
       ['التدريب ضمن سير العمل', 'تابع سجلات التدريب والتقدم إلى جانب العمليات اليومية.', 'تقدم التدريب'],
       ['إشارات تستحق الانتباه', 'اجمع سجلات مؤشرات الأداء ضمن نقاشات المديرين اليومية.', 'المؤشرات · الأداء'],
     ],
@@ -171,16 +171,16 @@ export default function MarketingHome() {
     <main id="top">
       <section className="mk-hero relative min-h-[640px] overflow-hidden">
         <div className="mk-grid absolute inset-0 opacity-60" aria-hidden="true" />
-        <div className="absolute -top-36 h-[500px] w-[500px] rounded-full bg-[#d1a45c]/15 blur-[90px]" style={{ insetInlineEnd: '-10%' }} aria-hidden="true" />
+        <div className="absolute -top-36 h-[500px] w-[500px] rounded-full bg-brass/15 blur-[90px]" style={{ insetInlineEnd: '-10%' }} aria-hidden="true" />
         <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 px-5 pb-20 pt-16 md:grid-cols-[.9fr_1.1fr] md:px-8 md:pb-28 md:pt-24">
           <div className="mk-reveal max-w-[560px]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#355a52]/20 bg-white/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-[#355a52] dark:text-[#c1d8cb]"><span className="size-1.5 rounded-full bg-[#c38d46]" />{t.eyebrow}</div>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-brand dark:text-brand-soft"><span className="size-1.5 rounded-full bg-[#c38d46]" />{t.eyebrow}</div>
             <h1 className="mk-display max-w-[660px] text-[clamp(3.5rem,7.8vw,6.65rem)] font-extrabold leading-[.93]">{t.headline}</h1>
             <p className="mt-7 max-w-[500px] text-[17px] font-semibold leading-7 opacity-80 md:text-[19px]">{t.subhead}</p>
             <p className="mt-4 max-w-[510px] text-[14px] leading-7 opacity-70">{t.intro}</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/app" className="group inline-flex h-12 items-center gap-3 rounded-full bg-[#355a52] px-6 text-[12px] font-bold text-white transition hover:bg-[#284841] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d1a45c]" data-testid="link-hero-workspace">{t.open}<Arrow size={16} className="transition-transform group-hover:translate-x-0.5" /></Link>
-              <a href="#platform" className="inline-flex h-12 items-center gap-2 rounded-full px-4 text-[12px] font-bold text-[#355a52] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#355a52] dark:text-[#d5e4dc]">{t.explore}<ArrowDown size={14} /></a>
+              <Link href="/app" className="group inline-flex h-12 items-center gap-3 rounded-full bg-brand px-6 text-[12px] font-bold text-primary-foreground transition hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d1a45c]" data-testid="link-hero-workspace">{t.open}<Arrow size={16} className="transition-transform group-hover:translate-x-0.5" /></Link>
+              <a href="#platform" className="inline-flex h-12 items-center gap-2 rounded-full px-4 text-[12px] font-bold text-brand hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#355a52] dark:text-[#d5e4dc]">{t.explore}<ArrowDown size={14} /></a>
             </div>
             <div className="mt-10 flex items-center gap-3 text-[11px] font-medium opacity-65"><span className="grid size-7 place-items-center rounded-full border border-current"><Check size={14} /></span>{t.proof}</div>
           </div>
