@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const meta = pageMeta[`/app/${(await params).section}`];
-  return { title: meta ? `${meta.title} — Fieldwise` : 'Not found — Fieldwise' };
+  return { title: meta ? `${meta.title} — ReOps Manager` : 'Not found — ReOps Manager' };
 }
 
 export default async function SectionPage({ params }: Props) {

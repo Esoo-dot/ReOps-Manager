@@ -68,7 +68,9 @@ export const recordUpdateSchema = z.object(editableFields).partial();
 export const recordIdSchema = z.coerce.number().int().positive();
 
 function serialize(row: OperationsRecordRow): OperationsRecord {
-  const { organizationId: _org, updatedAt: _updated, createdAt, ...rest } = row;
+  const { organizationId, updatedAt, createdAt, ...rest } = row;
+  void organizationId;
+  void updatedAt;
   return { ...rest, kind: rest.kind as OperationsRecord['kind'], createdAt: createdAt.toISOString() };
 }
 

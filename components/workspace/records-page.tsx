@@ -8,13 +8,15 @@ import { useCreateOperationsRecord, useDeleteOperationsRecord, useGetOperationsS
 import { type OperationsRecord, type OperationsRecordInput, type RecordKind } from '@/lib/api/types';
 import { Activity, BookOpenCheck, Building2, Check, ClipboardList, FileText, Filter, Plus, Search, ShieldCheck, Target, X, Pencil, Trash2 } from 'lucide-react';
 
+const EMPTY_RECORDS: OperationsRecord[] = [];
+
 function RecordsPage({ path, meta, language, globalSearch }: { path: string; meta: typeof pageMeta[string]; language: Language; globalSearch: string }) {
   const [localSearch, setLocalSearch] = useState('');
   const [showCreate, setShowCreate] = useState(false);
   const [editing, setEditing] = useState<OperationsRecord | null>(null);
   const [filter, setFilter] = useState('All');
   const query = useListOperationsRecords(meta.kind ? { kind: meta.kind } : undefined);
-  const records = query.data ?? [];
+  const records = query.data ?? EMPTY_RECORDS;
   const searchValue = `${localSearch} ${globalSearch}`.trim().toLowerCase();
   const filtered = useMemo(() => records.filter(r => {
     const matches = !searchValue || `${r.title} ${r.detail} ${r.assignee} ${r.branch} ${r.department} ${r.status}`.toLowerCase().includes(searchValue);
@@ -24,8 +26,8 @@ function RecordsPage({ path, meta, language, globalSearch }: { path: string; met
   const create = () => setShowCreate(true);
   return <>
     <PageTitle eyebrow={meta.eyebrow} title={meta.title} subtitle={meta.subtitle} language={language} action={<Button onClick={create} testId="button-create-record"><Plus size={15} />{tx('Add record', language)}</Button>} />
-    {path === '/app/tasks' && <div className="mb-6 grid gap-3 sm:grid-cols-3"><QuickStat label="In progress" value={records.filter(r => r.status.toLowerCase().includes('progress')).length} color="#c28a3c" /><QuickStat label="Completed" value={records.filter(r => r.status.toLowerCase().includes('complete')).length} color="#507d69" /><QuickStat label="High priority" value={records.filter(r => r.priority.toLowerCase() === 'high').length} color="#b56c52" /></div>}
-     {path === '/app/branches' && <div className="mb-6 grid gap-3 sm:grid-cols-3"><QuickStat label="Active locations" value={records.length} color="#507d69" /><QuickStat label="Avg. readiness" value={records.length ? `${Math.round(records.reduce((sum, record) => sum + record.progress, 0) / records.length)}%` : '—'} color="#c28a3c" /><QuickStat label="Needs attention" value={records.filter(r => r.status.toLowerCase().includes('attention')).length} color="#b56c52" /></div>}
+    {path === '/app/tasks' && <div className="mb-6 grid gap-3 sm:grid-cols-3"><QuickStat label="In progress" value={records.filter(r => r.status.toLowerCase().includes('progress')).length} color="#c28a3c" /><QuickStat label="Completed" value={records.filter(r => r.status.toLowerCase().includes('complete')).length} color="hsl(var(--status-positive))" /><QuickStat label="High priority" value={records.filter(r => r.priority.toLowerCase() === 'high').length} color="#b56c52" /></div>}
+     {path === '/app/branches' && <div className="mb-6 grid gap-3 sm:grid-cols-3"><QuickStat label="Active locations" value={records.length} color="hsl(var(--status-positive))" /><QuickStat label="Avg. readiness" value={records.length ? `${Math.round(records.reduce((sum, record) => sum + record.progress, 0) / records.length)}%` : '—'} color="#c28a3c" /><QuickStat label="Needs attention" value={records.filter(r => r.status.toLowerCase().includes('attention')).length} color="#b56c52" /></div>}
     {path === '/app/performance' && <PerformancePanel records={records} />}
     {path === '/app/training' && <TrainingPanel records={records} />}
     <section className="overflow-hidden rounded-xl border border-border bg-card">
@@ -71,7 +73,7 @@ function RecordRow({ record, path, onEdit }: { record: OperationsRecord; path: s
     if (window.confirm(`Delete “${record.title}”? This cannot be undone.`)) remove.mutate({ id: record.id }, { onSuccess: refresh });
   };
   return <div className="grid gap-3 px-4 py-4 transition-colors hover:bg-background/80 md:grid-cols-[minmax(200px,1.6fr)_minmax(110px,1fr)_minmax(110px,1fr)_100px_80px] md:items-center md:gap-4 md:px-5" data-testid={`row-record-${record.id}`}>
-    <div className="flex min-w-0 items-center gap-3">{identity ? <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[#e6eee7] text-[10px] font-bold text-[#507d69]">{identity}</div> : <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#edf0e9] text-primary">{isBranch ? <Building2 size={16} /> : path === '/app/requests' ? <ClipboardList size={16} /> : path === '/app/training' ? <BookOpenCheck size={16} /> : <FileText size={16} />}</div>}<div className="min-w-0 flex-1"><div className="truncate text-[11px] font-semibold">{record.title}</div><div className="mt-1 truncate text-[10px] text-muted-foreground">{record.detail || record.department || 'No additional details'}</div></div><div className="flex md:hidden"><RecordStatus status={record.status} /></div></div>
+    <div className="flex min-w-0 items-center gap-3">{identity ? <div className="grid size-9 shrink-0 place-items-center rounded-full bg-status-positive-soft text-[10px] font-bold text-status-positive">{identity}</div> : <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#edf0e9] text-primary">{isBranch ? <Building2 size={16} /> : path === '/app/requests' ? <ClipboardList size={16} /> : path === '/app/training' ? <BookOpenCheck size={16} /> : <FileText size={16} />}</div>}<div className="min-w-0 flex-1"><div className="truncate text-[11px] font-semibold">{record.title}</div><div className="mt-1 truncate text-[10px] text-muted-foreground">{record.detail || record.department || 'No additional details'}</div></div><div className="flex md:hidden"><RecordStatus status={record.status} /></div></div>
     <div className="flex items-center gap-2 pl-12 text-[10px] text-muted-foreground md:pl-0"><span className="md:hidden text-[9px] uppercase tracking-wide">With</span>{isPeople ? record.department || 'General' : record.assignee || 'Unassigned'}{isBranch && record.department ? ` · ${record.department}` : ''}</div>
     <div className="flex items-center gap-2 pl-12 text-[10px] text-muted-foreground md:pl-0"><span className="md:hidden text-[9px] uppercase tracking-wide">{isPeople ? 'Location' : 'Due'}</span>{isPeople ? record.branch || '—' : record.dueDate || record.priority || '—'}{!isPeople && record.dueDate && record.priority ? <span className={cx('rounded px-1.5 py-0.5 text-[9px] font-semibold', record.priority.toLowerCase() === 'high' ? 'bg-[#f8e8e2] text-[#a75b45]' : 'bg-muted text-muted-foreground')}>{record.priority}</span> : null}</div>
     <div className="hidden md:block"><RecordStatus status={record.status} /></div>
@@ -124,7 +126,7 @@ function TrainingPanel({ records }: { records: OperationsRecord[] }) {
   const completion = records.length ? Math.round(records.reduce((sum, record) => sum + record.progress, 0) / records.length) : 0;
   return <section className="mb-6 grid gap-3 sm:grid-cols-[1.3fr_1fr]">
     <div className="flex items-center gap-5 rounded-xl border border-border bg-[#f0f3eb] p-5"><div className="grid size-12 shrink-0 place-items-center rounded-xl bg-card text-primary shadow-sm"><BookOpenCheck size={21} /></div><div className="flex-1"><div className="text-[10px] font-bold uppercase tracking-[.13em] text-primary">LEARNING SNAPSHOT</div><div className="mt-1 text-[13px] font-bold">Team completion</div><div className="mt-1 text-[10px] text-muted-foreground">{records.length} courses · across all locations</div></div><strong className="font-[var(--app-font-serif)] text-[26px] font-extrabold">{completion}%</strong></div>
-    <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"><div className="grid size-10 place-items-center rounded-lg bg-[#f6ead5] text-[#a67b38]"><ShieldCheck size={18} /></div><div><div className="text-[12px] font-bold">Compliance training</div><div className="mt-1 text-[10px] text-muted-foreground">{records.filter(r => r.status.toLowerCase().includes('complete')).length} courses fully completed</div></div></div>
+    <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"><div className="grid size-10 place-items-center rounded-lg bg-brass-soft text-brass"><ShieldCheck size={18} /></div><div><div className="text-[12px] font-bold">Compliance training</div><div className="mt-1 text-[10px] text-muted-foreground">{records.filter(r => r.status.toLowerCase().includes('complete')).length} courses fully completed</div></div></div>
   </section>;
 }
 

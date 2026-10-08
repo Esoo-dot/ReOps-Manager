@@ -17,7 +17,7 @@ const copy = {
     eyebrow: 'OPERATIONS, IN GOOD FORM',
     headline: 'Good operations should travel.',
     subhead: 'The standard at one location should feel just as clear at the next.',
-    intro: 'Fieldwise gives managers one practical place to coordinate people, procedures, training, requests, and performance—without losing sight of the work happening on the floor.',
+    intro: 'ReOps Manager gives managers one practical place to coordinate people, procedures, training, requests, and performance—without losing sight of the work happening on the floor.',
     explore: 'See the workspace', below: 'A clearer view of the day',
     proof: 'One shared operating picture. In English or Arabic.',
     dashboard: 'Operations overview', locations: 'Locations in view', readiness: 'Training completion',
@@ -34,7 +34,7 @@ const copy = {
     ],
     platformEyebrow: 'ONE WORKSPACE, CONNECTED',
     platformTitle: 'Make the next right action easier to see.',
-    platformIntro: 'Fieldwise brings the everyday operating pieces into one shared view. Start with what your teams need today, then build a steadier rhythm across locations.',
+    platformIntro: 'ReOps Manager brings the everyday operating pieces into one shared view. Start with what your teams need today, then build a steadier rhythm across locations.',
     modules: [
       ['Work in motion', 'Tasks and requests have a clear place, an owner, and a status your team can follow.', 'Tasks · Requests'],
       ['A standard people can use', 'Keep procedures and checklists close to the moments they are meant to guide.', 'Procedures · Checklists'],
@@ -65,18 +65,18 @@ const copy = {
     ],
     closeLabel: 'START WITH A CLEARER VIEW',
     closeTitle: 'Bring the moving parts into view.',
-    closeText: 'Explore the Fieldwise workspace and see how your everyday operations can feel more connected.',
-    enter: 'Explore Fieldwise', footer: 'A shared workspace for people, process, and performance.',
+    closeText: 'Explore the ReOps Manager workspace and see how your everyday operations can feel more connected.',
+    enter: 'Explore ReOps Manager', footer: 'A shared workspace for people, process, and performance.',
     sampleTag: 'SAMPLE DATA',
   },
   ar: {
-    nav: ['المنصة', 'كيف تعمل', 'لكل موقع'],
-    open: 'افتح مساحة العمل', theme: 'تبديل سمة الألوان', language: 'تغيير اللغة',
-    eyebrow: 'عمليات أكثر وضوحاً',
-    headline: 'العمليات الجيدة تنتقل معك.',
-    subhead: 'ينبغي أن يكون المعيار في موقع واضحاً بالقدر نفسه في الموقع التالي.',
-    intro: 'تمنح فيلدوايز المديرين مساحة عملية واحدة لتنسيق الأشخاص والإجراءات والتدريب والطلبات والأداء، مع إبقاء العمل اليومي في الصورة.',
-    explore: 'استكشف مساحة العمل', below: 'رؤية أوضح لليوم',
+    nav: ['المنصة', 'لماذا ريوبس؟', 'قصص نجاح'],
+    open: 'دخول الشركاء', theme: 'تبديل سمة الألوان', language: 'تغيير اللغة',
+    eyebrow: 'تدريب مكتمل',
+    headline: 'نعيد تعريف التشغيل',
+    subhead: 'رقمنة إجراءات التشغيل، أتمتة التدريب، ومتابعة الأداء لحظيًا عبر جميع الفروع من منصة واحدة',
+    intro: '',
+    explore: 'احجز عرضًا توضيحيًا', below: 'رؤية أوضح لليوم',
     proof: 'صورة تشغيلية مشتركة، بالعربية أو الإنجليزية.',
     dashboard: 'نظرة عامة على العمليات', locations: 'المواقع المعروضة', readiness: 'إتمام التدريب',
     tasks: 'المهام المفتوحة', requests: 'طلبات للمراجعة', today: 'اليوم · تحديث ميداني',
@@ -92,16 +92,16 @@ const copy = {
     ],
     platformEyebrow: 'مساحة عمل واحدة مترابطة',
     platformTitle: 'اجعل الخطوة التالية أوضح.',
-    platformIntro: 'تجمع فيلدوايز عناصر التشغيل اليومية في عرض مشترك. ابدأ بما تحتاجه الفرق اليوم، ثم ابنِ إيقاعاً أكثر ثباتاً بين المواقع.',
+    platformIntro: 'تجمع ريوبس عناصر التشغيل اليومية في عرض مشترك. ابدأ بما تحتاجه الفرق اليوم، ��م ابنِ إيقاعاً أكثر ثباتاً بين المواقع.',
     modules: [
       ['العمل مستمر', 'للمهام والطلبات مكان واضح ومسؤول وحالة يمكن للفريق متابعتها.', 'المهام · الطلبات'],
-      ['معيار قابل للاستخدام', 'أبقِ الإجراءات وقوائم التحقق قريبة من اللحظات التي ترشدها.', 'الإجراءات · قوائم التحقق'],
-      ['الأشخاص قبل الأرقام', 'اربط سجلات الموظفين والفروع بالعمل الذي يجري حولهم.', 'الأشخاص · الفروع'],
+      ['معيار قابل للاستخدام', 'أبقِ الإجراءات وقوائم التحقق ق����يبة من اللحظات التي ترشدها.', 'الإجراءات · قوائم التحقق'],
+      ['الأشخاص قبل الأرقام', 'اربط سجلات الموظفين والفروع با��عمل الذي يجري حولهم.', 'الأشخاص · الفروع'],
       ['التدريب ضمن سير العمل', 'تابع سجلات التدريب والتقدم إلى جانب العمليات اليومية.', 'تقدم التدريب'],
       ['إشارات تستحق الانتباه', 'اجمع سجلات مؤشرات الأداء ضمن نقاشات المديرين اليومية.', 'المؤشرات · الأداء'],
     ],
     rhythmEyebrow: 'إيقاع تشغيلي أفضل',
-    rhythmTitle: 'من تحديثات متفر��ة إلى خطوة مشتركة.',
+    rhythmTitle: 'من تحديثات متفرقة إلى خطوة مشتركة.',
     rhythmIntro: 'حلقة عملية للمديرين القريبين من العمل والمسؤولين عن الصورة الكاملة.',
     steps: [
       ['حدّد المعيار', 'اجعل الإجراء أو قائمة التحقق سهلة الرجوع إليها.'],
@@ -121,8 +121,8 @@ const copy = {
       ['للفرق المتنامية', 'امنح أعضاء الفريق طريقة مشتركة للعثور على المعيار.'],
     ],
     closeLabel: 'ابدأ برؤية أوضح', closeTitle: 'اجمع تفاصيل العمل في صورة واحدة.',
-    closeText: 'استكشف مساحة فيلدوايز واكتشف كيف يمكن لعملياتك اليومية أن تصبح أكثر ترابطاً.',
-    enter: 'استكشف فيلدوايز', footer: 'مساحة مشتركة للأشخاص والإجراءات والأداء.',
+    closeText: 'استكشف مساحة ريوبس واكتشف كيف يمكن لعملياتك اليومية أن تصبح أكثر ترابطاً.',
+    enter: 'استكشف ريوبس', footer: 'مساحة مشتركة للأشخاص والإجراءات والأداء.',
     sampleTag: 'بيانات توضيحية',
   },
 } as const;
@@ -145,9 +145,9 @@ export default function MarketingHome() {
   return <div className="marketing min-h-[100dvh]" dir={ar ? 'rtl' : 'ltr'} lang={language}>
     <header className="mk-header sticky top-0 z-40 border-b border-border/75 backdrop-blur-xl">
       <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between gap-4 px-5 md:px-8">
-        <a href="#top" className="flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="Fieldwise home">
+        <a href="#top" className="flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="ReOps Manager home">
           <span className="grid size-9 place-items-center rounded-[11px] bg-primary text-primary-foreground"><Command size={19} /></span>
-          <span className="font-[var(--app-font-serif)] text-[20px] font-extrabold tracking-[-.07em]">fieldwise</span>
+          <span className="font-[var(--app-font-serif)] text-[20px] font-extrabold tracking-[-.07em]">ReOps</span>
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label={ar ? 'التنقل الرئيسي' : 'Main navigation'}>
           {t.nav.map((item, index) => <a key={item} href={['#platform', '#rhythm', '#teams'][index]} className="text-[12px] font-semibold text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{item}</a>)}
@@ -171,16 +171,16 @@ export default function MarketingHome() {
     <main id="top">
       <section className="mk-hero relative min-h-[640px] overflow-hidden">
         <div className="mk-grid absolute inset-0 opacity-60" aria-hidden="true" />
-        <div className="absolute -top-36 h-[500px] w-[500px] rounded-full bg-[#d1a45c]/15 blur-[90px]" style={{ insetInlineEnd: '-10%' }} aria-hidden="true" />
+        <div className="absolute -top-36 h-[500px] w-[500px] rounded-full bg-brass/15 blur-[90px]" style={{ insetInlineEnd: '-10%' }} aria-hidden="true" />
         <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 px-5 pb-20 pt-16 md:grid-cols-[.9fr_1.1fr] md:px-8 md:pb-28 md:pt-24">
           <div className="mk-reveal max-w-[560px]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#355a52]/20 bg-white/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-[#355a52] dark:text-[#c1d8cb]"><span className="size-1.5 rounded-full bg-[#c38d46]" />{t.eyebrow}</div>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-brand dark:text-brand-soft"><span className="size-1.5 rounded-full bg-[#c38d46]" />{t.eyebrow}</div>
             <h1 className="mk-display max-w-[660px] text-[clamp(3.5rem,7.8vw,6.65rem)] font-extrabold leading-[.93]">{t.headline}</h1>
             <p className="mt-7 max-w-[500px] text-[17px] font-semibold leading-7 opacity-80 md:text-[19px]">{t.subhead}</p>
             <p className="mt-4 max-w-[510px] text-[14px] leading-7 opacity-70">{t.intro}</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/app" className="group inline-flex h-12 items-center gap-3 rounded-full bg-[#355a52] px-6 text-[12px] font-bold text-white transition hover:bg-[#284841] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d1a45c]" data-testid="link-hero-workspace">{t.open}<Arrow size={16} className="transition-transform group-hover:translate-x-0.5" /></Link>
-              <a href="#platform" className="inline-flex h-12 items-center gap-2 rounded-full px-4 text-[12px] font-bold text-[#355a52] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#355a52] dark:text-[#d5e4dc]">{t.explore}<ArrowDown size={14} /></a>
+              <Link href="/app" className="group inline-flex h-12 items-center gap-3 rounded-full bg-brand px-6 text-[12px] font-bold text-primary-foreground transition hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d1a45c]" data-testid="link-hero-workspace">{t.open}<Arrow size={16} className="transition-transform group-hover:translate-x-0.5" /></Link>
+              <a href="#platform" className="inline-flex h-12 items-center gap-2 rounded-full px-4 text-[12px] font-bold text-brand hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#355a52] dark:text-[#d5e4dc]">{t.explore}<ArrowDown size={14} /></a>
             </div>
             <div className="mt-10 flex items-center gap-3 text-[11px] font-medium opacity-65"><span className="grid size-7 place-items-center rounded-full border border-current"><Check size={14} /></span>{t.proof}</div>
           </div>
@@ -219,7 +219,7 @@ export default function MarketingHome() {
       <section className="border-b border-border bg-background px-5 py-5 md:px-8">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-x-6 gap-y-3">
           <span className="text-[10px] font-bold uppercase tracking-[.15em] text-muted-foreground">{t.proof}</span>
-          <div className="flex flex-wrap gap-2">{['People', 'Process', 'Locations', 'Performance'].map((name, index) => <span key={name} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[10px] font-semibold text-muted-foreground"><span className="grid size-4 place-items-center rounded-full bg-primary/10 text-primary">{[<UsersRound size={10} />, <FileText size={10} />, <Building2 size={10} />, <ChartNoAxesCombined size={10} />][index]}</span>{name}</span>)}</div>
+          <div className="flex flex-wrap gap-2">{['People', 'Process', 'Locations', 'Performance'].map((name, index) => <span key={name} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[10px] font-semibold text-muted-foreground"><span className="grid size-4 place-items-center rounded-full bg-primary/10 text-primary">{[UsersRound, FileText, Building2, ChartNoAxesCombined].map((Icon, iconIndex) => iconIndex === index ? <Icon key={iconIndex} size={10} /> : null)}</span>{name}</span>)}</div>
         </div>
       </section>
 
@@ -268,7 +268,7 @@ export default function MarketingHome() {
         <div className="mx-auto grid max-w-[1180px] gap-10 md:grid-cols-[1fr_.9fr] md:items-center">
           <div><div className="mb-4 text-[10px] font-bold uppercase tracking-[.18em] text-[#8c7045] dark:text-[#dfc185]">{t.bilingualEyebrow}</div><h2 className="mk-display max-w-[560px] text-[clamp(2.5rem,5.3vw,4.4rem)] font-extrabold leading-[.98]">{t.bilingualTitle}</h2><p className="mt-5 max-w-[530px] text-[13px] leading-7 opacity-75">{t.bilingualText}</p><div className="mt-7 flex flex-wrap gap-2"><span className="rounded-full border border-[#243b3c]/20 px-3 py-2 text-[10px] font-semibold">{t.langEn}</span><span className="rounded-full border border-[#243b3c]/20 px-3 py-2 text-[10px] font-semibold">{t.langAr}</span></div></div>
           <div className="rounded-[22px] border border-[#243b3c]/10 bg-[#faf8f2] p-5 shadow-[0_22px_60px_rgba(36,59,60,.1)] dark:bg-[#1c2d2e] md:p-7">
-            <div className="flex items-center justify-between border-b border-border pb-4"><div className="flex items-center gap-2"><span className="grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground"><Command size={15} /></span><span className="text-[12px] font-extrabold">fieldwise</span></div><span className="rounded-full bg-primary/10 px-3 py-1 text-[9px] font-bold text-primary">{t.sampleTag}</span></div>
+            <div className="flex items-center justify-between border-b border-border pb-4"><div className="flex items-center gap-2"><span className="grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground"><Command size={15} /></span><span className="text-[12px] font-extrabold">ReOps</span></div><span className="rounded-full bg-primary/10 px-3 py-1 text-[9px] font-bold text-primary">{t.sampleTag}</span></div>
             <div dir="rtl" lang="ar" className="mt-6 rounded-xl bg-[#e9eee5] p-5 text-[#243b3c] dark:bg-[#273d3a] dark:text-[#edf0e8]">
               <div className="text-[9px] font-bold text-[#62806e]">{t.rtlNote}</div><div className="mt-4 flex items-center justify-between"><div><div className="text-[11px] font-semibold">مراجعة جاهزية الوردية</div><div className="mt-1 text-[9px] opacity-60">فرع الواجهة · اليوم</div></div><span className="grid size-8 place-items-center rounded-full bg-white/70 text-[#52745d] dark:bg-white/10"><Check size={15} /></span></div>
               <div className="mt-5 space-y-2"><div className="h-2 w-full rounded-full bg-[#355a52]/10"><div className="h-full w-[78%] rounded-full bg-[#638477]" /></div><div className="flex justify-between text-[9px] opacity-60"><span>التحقق من التجهيز</span><span>٧٨٪</span></div></div>
@@ -298,7 +298,7 @@ export default function MarketingHome() {
     </main>
     <footer className="border-t border-border px-5 py-7 md:px-8">
       <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-2 font-[var(--app-font-serif)] text-[15px] font-extrabold tracking-[-.06em]"><span className="grid size-7 place-items-center rounded-lg bg-primary text-primary-foreground"><Command size={14} /></span>fieldwise</a>
+        <a href="#top" className="flex items-center gap-2 font-[var(--app-font-serif)] text-[15px] font-extrabold tracking-[-.06em]"><span className="grid size-7 place-items-center rounded-lg bg-primary text-primary-foreground"><Command size={14} /></span>ReOps</a>
         <p className="text-[10px] text-muted-foreground">{t.footer}</p>
         <Link href="/app" className="text-[10px] font-bold text-primary hover:underline">{t.open}</Link>
       </div>
